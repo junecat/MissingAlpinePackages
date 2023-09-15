@@ -12,3 +12,11 @@ https://dl-cdn.alpinelinux.org/alpine/v3.18/community/x86_64/ffmpeg-libavcodec-6
 
 https://dl-cdn.alpinelinux.org/alpine/v3.18/community/x86_64/ffmpeg-libavformat-6.0-r15.apk
 
+Using this (previously downloaded) packages in dockerfile:
+
+COPY ./apk/* /tmp/
+
+RUN touch repo.list
+
+RUN apk add --repositories-file=repo.list --allow-untrusted --no-network --no-cache /tmp/ca-certificates-20171114-r3.apk /tmp/libcurl-7.61.1-r1.apk /tmp/libssh2-1.8.0-r3.apk /tmp/nghttp2-libs-1.32.0-r0.apk /tmp/curl-7.61.1-r1.apk
+
